@@ -54,18 +54,15 @@ button {
     justify-content: center;
     align-items: center;
     margin: 0 auto 0 auto; 
-    width: 30x;
+    width: 30px;
     height: 30px;
     border-radius: 50%;
     border: none;
     background-color: red;
+    font-size: .9rem;
     /* background-image: url('public/icon_heart.png') no-repeat; */
 }
 
-.change-thing {
-    display: grid;
-    grid-area: text;
-}
 
 
 

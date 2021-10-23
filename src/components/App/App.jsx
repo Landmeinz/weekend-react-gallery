@@ -4,7 +4,7 @@ import axios from 'axios';
 import {useState, useEffect} from 'react';
 
 import GalleryList from '../GalleryList/GalleryList.jsx'
-import GalleryItem from '../GalleryItem/GalleryItem.jsx';
+
 
 
 import './App.css';
@@ -30,8 +30,6 @@ function App() {
   }, []);
 
 
-  log
-
   return (
     <div className="app-container">
 
@@ -40,7 +38,11 @@ function App() {
       </header>
 
       <main className="main-container">
-        <GalleryList galleryList={galleryList} />
+        <GalleryList 
+          galleryList={galleryList} 
+          fetchGalleryList={fetchGalleryList}
+          setGalleryList={setGalleryList}
+          />
       </main>
 
     </div>

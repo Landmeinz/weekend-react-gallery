@@ -1,11 +1,13 @@
 import './GalleryItem.css';
 import axios from 'axios';
+import {useState} from 'react';
 
 
 
 function GalleryItem({listItem, fetchGalleryList, setGalleryList}) {
     console.log(`in GalleryItem`);
 
+    const [toggleStatus, setToggleStatus] = useState(false)
 
     const handleLike = (id) => {
         console.log(`you LIKED this image`);
@@ -19,14 +21,35 @@ function GalleryItem({listItem, fetchGalleryList, setGalleryList}) {
         });
     };
 
+    
+    const toggle = () => {
+        console.log(`CLICK on image to toggle`);
+        setToggleStatus(!toggleStatus);
+    }
+
+    const image = (<img className="image"
+                    src={listItem.path} 
+                    alt={listItem.description} 
+                />)
+
+
+    const description = (
+    <div className="image-description">
+        <p>you made the description come to life</p>
+    </div>)
+
+
+    console.log(toggleStatus);
 
     return(
         <div className="image-card">
 
-            <img className="image"
-                src={listItem.path} 
-                alt={listItem.description} 
-            />
+            <div onClick={toggle}> 
+                {toggleStatus ? image : description}
+            </div>
+           
+
+           
             
             <div className="image-info">
                 <button onClick={handleLike} 

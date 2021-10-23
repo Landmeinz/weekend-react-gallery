@@ -1,0 +1,73 @@
+
+:root {
+    --size-button-like: 22px; 
+
+    --color-button-like: hsla(360, 90%, 45%, 1)
+}
+
+.image-card {
+    border: 1px solid green;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns:  1fr 1fr;
+    grid-template-rows:     1fr .25fr;
+    grid-template-areas:    "image image"
+                            "info info";
+    width: 200px;
+}
+
+.image {
+    border: 1px solid blue;
+    border-radius: 5px;
+    width: 200px;
+    height: 200px;
+    /* border-radius: 50%; */
+    grid-area: image;
+    object-fit: cover;
+}
+.image:hover {
+    cursor: pointer;
+}
+
+.image-info {
+    display: grid;
+    grid-area: info;
+    grid-template-columns: .25fr 1fr;
+    grid-template-areas: "like text";
+    justify-content: center;
+    align-items: center;
+}
+
+.button-like {
+    display: grid;
+    grid-area: like;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 0 auto; 
+    width: var(--size-button-like);
+    height: var(--size-button-like);
+    border-radius: 50%;
+    border: none;
+    background-color: var(--color-button-like);
+    font-size: .8rem;
+    /* background-image: url('public/icon_heart.png') no-repeat; */
+}
+.button-like:active {
+    transform: scale(1.25);
+}
+
+.image-description {
+    border: 1px solid blue;
+    border-radius: 5px;
+    width: 200px;
+    height: 200px;
+    grid-area: image;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    /* display: none; */
+}
+
+.toggle-hidden {
+    display: none; 
+}

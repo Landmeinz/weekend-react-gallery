@@ -1,12 +1,83 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+button {
+    cursor: pointer;
+}
 
 .image-container{
     border: 1px solid red;
-    height: 160px;
-    width: 160px;
-    margin: 10%;
+    max-width: 700px;
+    min-width: 200px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
 }
 
-.image-container:hover {
-    border: 1px solid red;
-    transform: scale(1.62);
+.image-card {
+    border: 1px solid green;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns:  1fr 1fr;
+    grid-template-rows:     1fr .25fr;
+    grid-template-areas:    "image image"
+                            "info info";
+    width: 200px;
 }
+
+.image {
+    border: 1px solid blue;
+    border-radius: 5px;
+    width: 200px;
+    height: 200px;
+    /* border-radius: 50%; */
+    grid-area: image;
+    object-fit: cover;
+}
+
+.image-info {
+    display: grid;
+    grid-area: info;
+    grid-template-columns: .25fr 1fr;
+    grid-template-areas: "like text";
+    justify-content: center;
+    align-items: center;
+}
+
+.button-like {
+    display: grid;
+    grid-area: like;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 0 auto; 
+    width: 30x;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background-color: red;
+    /* background-image: url('public/icon_heart.png') no-repeat; */
+}
+
+.change-thing {
+    display: grid;
+    grid-area: text;
+}
+
+
+
+
+
+
+
+
+/* starts out at border radius 50% */
+/* on hover border radius goes to 10px */
+
+/* .image-container:hover {
+    border: 1px solid red;
+    transform: scale(1.25);
+} */

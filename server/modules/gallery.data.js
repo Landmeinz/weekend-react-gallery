@@ -17,8 +17,8 @@ const galleryItems = [
 
     { 
         id: 3, 
-        path: 'images/', 
-        description: 'TBD',
+        path: 'images/bike.jpeg', 
+        description: 'love riding bikes',
         likes: 0
     },
 

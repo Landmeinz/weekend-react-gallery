@@ -16,9 +16,13 @@ router.put('/like/:id', (req, res) => {
     res.sendStatus(200);
 }); // END PUT Route
 
+
+
 // GET Route
 router.get('/', (req, res) => {
     res.send(galleryItems);
 }); // END GET Route
+
+
 
 module.exports = router;

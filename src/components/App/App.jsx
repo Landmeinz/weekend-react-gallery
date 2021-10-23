@@ -1,5 +1,5 @@
 import React from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 
 import {useState, useEffect} from 'react';
 
@@ -16,33 +16,35 @@ function App() {
   const [galleryList, setGalleryList] = useState([]);
 
   const fetchGalleryList = () => {
-    
     axios.get('/gallery')
     .then((response) => {
-      console.log('GET /gallery response', response);
-      // set gallery list
+      console.log('GET /gallery RESPONSE', response);
+      setGalleryList(response.data);
     }).catch((error) => {
       console.log('GET /gallery ERROR', error);
     });
   };
 
+  useEffect(() =>{
+    fetchGalleryList();
+  }, []);
 
-    return (
-      <div className="App">
 
-        <header className="App-header">
-          <h1 className="App-title">Gallery of My Life</h1>
-        </header>
+  log
 
-        <p>Gallery goes here</p>
+  return (
+    <div className="app-container">
 
+      <header className="app-header">
+        <h1 className="app-title">Gallery of My Life</h1>
+      </header>
+
+      <main className="main-container">
         <GalleryList galleryList={galleryList} />
+      </main>
 
-        {/* <img src="images/goat_small.jpg"/>
-        <img src="images/peace_lily.png" width="150" height="150"/> */}
-
-      </div>
-    );
+    </div>
+  );
 }
 
 

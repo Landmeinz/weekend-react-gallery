@@ -1,15 +1,19 @@
-.App {
+.app-container {
   text-align: center;
 }
 
-.App-header {
+.app-header {
   background-color: #222;
   padding: 1em;
   color: white;
   margin-bottom: 1em;
 }
 
-.App-title {
+.app-title {
   font-size: 1.5em;
 }
 
+.main-container {
+  display: flex;
+  justify-content: center;
+}

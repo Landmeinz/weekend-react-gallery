@@ -2,8 +2,13 @@ import './GalleryList.css';
 
 
 
-function GalleryList() {
+function GalleryList({galleryList}) {
     console.log(`in GalleryList`);
+    return(
+        <div className="image-container"> 
+            {/* <img src={galleryList.path} alt={galleryList.path} /> */}
+        </div>
+    )
 } // GalleryList
 
 

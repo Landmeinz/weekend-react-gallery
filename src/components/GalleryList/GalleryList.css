@@ -1,0 +1,12 @@
+
+.image-container{
+    border: 1px solid red;
+    height: 160px;
+    width: 160px;
+    margin: 10%;
+}
+
+.image-container:hover {
+    border: 1px solid red;
+    transform: scale(1.62);
+}

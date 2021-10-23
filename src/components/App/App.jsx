@@ -17,7 +17,8 @@ function App() {
 
   const fetchGalleryList = () => {
     
-    axios.get('/gallery').then((response) => {
+    axios.get('/gallery')
+    .then((response) => {
       console.log('GET /gallery response', response);
       // set gallery list
     }).catch((error) => {
@@ -35,7 +36,7 @@ function App() {
 
         <p>Gallery goes here</p>
 
-        <GalleryList />
+        <GalleryList galleryList={galleryList} />
 
         {/* <img src="images/goat_small.jpg"/>
         <img src="images/peace_lily.png" width="150" height="150"/> */}

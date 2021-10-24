@@ -13,10 +13,10 @@ button {
 }
 
 .app-header {
-  background-color: #222;
+  border-bottom: 1px solid gray;
   padding: 1em;
-  color: white;
-  margin-bottom: 1em;
+  color: gray;
+  margin: 20px 8% 40px 8%;
 }
 
 .app-title {

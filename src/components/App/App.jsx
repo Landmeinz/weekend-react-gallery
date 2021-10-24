@@ -15,18 +15,37 @@ import './App.css';
 function App() {
 
 
-  const addGalleryData = (newPost) => {
-    axios({
-      method: 'POST',
-      url:    '/gallery',
-      data:   newPost,
-    }).then(response => {
-      console.log('POST /gallery response:', response);
-      fetchGalleryList();
-    }).catch(error => {
-      console.log('POST /gallery ERROR:', error);
-    });
-  }
+  // const addGalleryData = (newPost) => {
+  //   axios({
+  //     method: 'POST',
+  //     url:    '/gallery',
+  //     data:   newPost,
+  //   }).then(response => {
+  //     console.log('POST /gallery response:', response);
+  //     fetchGalleryList();
+  //   }).catch(error => {
+  //     console.log('POST /gallery ERROR:', error);
+  //   });
+  // }
+
+  const [messageState, setMessageState] = useState(false);
+
+  const handleMessage = () => {
+    console.log(`CLICK on the message button`);
+    setMessageState(!messageState)
+  };
+
+  const showMessageTray = (
+    <div className="message-tray-show">
+      
+    </div>
+  )
+
+  const hideMessageTray = (
+    <div className="hidden"></div>
+  )
+
+
 
 
   const [galleryList, setGalleryList] = useState([]);
@@ -51,7 +70,8 @@ function App() {
     <div className="app-container">
 
       <header className="app-header">
-        <h1 className="app-title">GALLERY OF AWESOME STUFF</h1>
+        <h1 className="app-title">GALLERY OF STUFF I LIKE</h1>
+        <button onClick={handleMessage} className="button-message">drop a short message</button>
       </header>
 
       <main className="main-container">
@@ -61,6 +81,10 @@ function App() {
           setGalleryList={setGalleryList}
           />
       </main>
+
+      <section>
+        {messageState ? showMessageTray : hideMessageTray }
+      </section>
 
     </div>
   );

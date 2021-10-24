@@ -9,7 +9,7 @@ const config = {
     idleTimeoutMillis: 30000    // 30 seconds before timeout/cancel query
 }
 
-const pool = new Pool({config});
+const pool = new Pool(config);
 
 
 

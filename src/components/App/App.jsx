@@ -14,6 +14,21 @@ import './App.css';
 // photo gallery App; 
 function App() {
 
+
+  const addGalleryData = (newPost) => {
+    axios({
+      method: 'POST',
+      url:    '/gallery',
+      data:   newPost,
+    }).then(response => {
+      console.log('POST /gallery response:', response);
+      fetchGalleryList();
+    }).catch(error => {
+      console.log('POST /gallery ERROR:', error);
+    });
+  }
+
+
   const [galleryList, setGalleryList] = useState([]);
 
   const fetchGalleryList = () => {
@@ -29,6 +44,7 @@ function App() {
   useEffect(() =>{
     fetchGalleryList();
   }, []);
+
 
 
   return (

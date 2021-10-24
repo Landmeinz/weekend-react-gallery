@@ -9,6 +9,7 @@ button {
 }
 
 .app-container {
+  border: 1px solid red;
   text-align: center;
 }
 
@@ -26,4 +27,5 @@ button {
 .main-container {
   display: flex;
   justify-content: center;
+  gap: 20px;
 }

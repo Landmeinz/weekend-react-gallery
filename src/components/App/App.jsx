@@ -4,6 +4,7 @@ import axios from 'axios';
 import {useState, useEffect} from 'react';
 
 import GalleryList from '../GalleryList/GalleryList.jsx'
+import MessageTray from '../MessageTray/MessageTray.jsx'
 
 
 
@@ -28,23 +29,13 @@ function App() {
   //   });
   // }
 
-  const [messageState, setMessageState] = useState(false);
+
+  const [messageState, setMessageState] = useState(true);
 
   const handleMessage = () => {
-    console.log(`CLICK on the message button`);
+    console.log(`CLICK message button`);
     setMessageState(!messageState)
   };
-
-  const showMessageTray = (
-    <div className="message-tray-show">
-      
-    </div>
-  )
-
-  const hideMessageTray = (
-    <div className="hidden"></div>
-  )
-
 
 
 
@@ -75,16 +66,20 @@ function App() {
       </header>
 
       <main className="main-container">
+
+        <MessageTray 
+          messageState={messageState} 
+        />
+
         <GalleryList 
           galleryList={galleryList} 
           fetchGalleryList={fetchGalleryList}
           setGalleryList={setGalleryList}
           />
+        
       </main>
 
-      <section>
-        {messageState ? showMessageTray : hideMessageTray }
-      </section>
+      
 
     </div>
   );

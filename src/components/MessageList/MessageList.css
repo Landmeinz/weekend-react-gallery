@@ -1,0 +1,32 @@
+
+:root{
+    --box-shadow-message:    hsla(220, 20%, 50%, .5) 0px 1px 4px;
+
+    --color-valid-green:       hsla(110, 50%, 50%, .8);
+    --color-invalid-red:       hsla(360, 90%, 60%, .9);
+}
+
+.li-message{
+    margin: 18px 0 0 0; 
+    padding: 3% 5% 3% 5%;
+    /* border: 1px solid var(--color-button-post); */
+    border-radius: var(--border-radius-small);
+    color: var(--color-text-gray-medium);
+    list-style-type: none;
+    font-size: .85rem;
+    box-shadow: var(--box-shadow-message);
+}
+
+/* all input fields in the form will turn green when HTML required field is field */
+input:required:valid {
+    border-color: var(--color-valid-green);
+  }
+  input:invalid {
+    border-color: var(--color-invalid-red);
+  }
+  input:required:focus:valid {
+    border-color: var(--color-valid-green);
+  }
+  input:focus:invalid {
+    border-color: var(--color-invalid-red);
+  }

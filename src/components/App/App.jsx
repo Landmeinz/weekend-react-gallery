@@ -4,7 +4,7 @@ import axios from 'axios';
 import {useState, useEffect} from 'react';
 
 import GalleryList from '../GalleryList/GalleryList.jsx'
-
+import MessageTray from '../MessageTray/MessageTray.jsx'
 
 
 import './App.css';
@@ -13,7 +13,6 @@ import './App.css';
 
 // photo gallery App; 
 function App() {
-
 
   // const addGalleryData = (newPost) => {
   //   axios({
@@ -28,23 +27,43 @@ function App() {
   //   });
   // }
 
+
+  const [messageList, setMessageList] = useState([]);
+
+  const fetchMessageList = () => {
+    axios.get('/messages')
+    .then((response) => {
+      console.log('GET /messages RESPONSE', response);
+      setMessageList(response.data);
+    }).catch((error) => {
+      console.log('GET /gallery ERROR', error);
+    });
+  };
+
+  const postMessage = (newMessage) => {
+    console.log('new message from postMessage:', newMessage);
+    axios({
+        method: `POST`,
+        url:    `/messages`,
+        data:   newMessage
+    }).then(response => {
+        console.log(`POST /messages response`, response);
+        fetchMessageList();
+    }).catch(error => {
+        console.log(`POST /messages ERROR`, error);
+    })
+  }
+
+
+
+
+
   const [messageState, setMessageState] = useState(false);
 
   const handleMessage = () => {
-    console.log(`CLICK on the message button`);
+    console.log(`CLICK message button`);
     setMessageState(!messageState)
   };
-
-  const showMessageTray = (
-    <div className="message-tray-show">
-      
-    </div>
-  )
-
-  const hideMessageTray = (
-    <div className="hidden"></div>
-  )
-
 
 
 
@@ -64,7 +83,9 @@ function App() {
     fetchGalleryList();
   }, []);
 
-
+  useEffect(() =>{
+    fetchMessageList();
+  }, []);
 
   return (
     <div className="app-container">
@@ -75,16 +96,23 @@ function App() {
       </header>
 
       <main className="main-container">
+
+        <MessageTray 
+          messageState={messageState} 
+          messageList={messageList}
+          fetchMessageList={fetchMessageList}
+          postMessage={postMessage}
+        />
+
         <GalleryList 
           galleryList={galleryList} 
           fetchGalleryList={fetchGalleryList}
           setGalleryList={setGalleryList}
           />
+        
       </main>
 
-      <section>
-        {messageState ? showMessageTray : hideMessageTray }
-      </section>
+      
 
     </div>
   );

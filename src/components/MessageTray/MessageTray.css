@@ -16,6 +16,7 @@
     padding: 1.5% 15px 0 15px; 
     border-radius: var(--border-radius-small);
     box-shadow: var(--box-shadow-card);
+    overflow: auto;
 }
   
 .message-input-container {

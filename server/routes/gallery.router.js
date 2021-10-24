@@ -18,7 +18,7 @@ const galleryItems = require('../modules/gallery.data');
 // }); // END PUT Route
 
 
-// database PUT Route
+// database PUT Route; 
 router.put('/like/:id', (req, res) => {
     console.log(req.params);
     const galleryId = req.params.id;
@@ -38,7 +38,7 @@ router.put('/like/:id', (req, res) => {
             res.sendStatus(500);
         });
     
-}); // END PUT Route
+}); // END PUT Route;
 
 
 

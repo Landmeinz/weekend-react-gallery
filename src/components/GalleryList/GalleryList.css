@@ -1,13 +1,13 @@
 
 
 .image-container{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     max-width: 700px;
     min-width: 200px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: var(--size-image-gap);
     justify-content: center;
 }
 

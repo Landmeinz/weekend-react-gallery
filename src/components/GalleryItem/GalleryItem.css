@@ -1,33 +1,59 @@
 
 :root {
-    --size-button-like: 22px; 
+    --size-button-like: 28px; 
+    --size-thumbs-up:   30px;
+    --size-image:       220px;
+    --size-image-gap:   15px;
+    --size-description: 200px;
 
-    --color-button-like: hsla(360, 90%, 45%, 1)
+    --color-button-like:    hsla(360, 80%, 60%, 1);
+    --color-thumbs-up:      hsla(210, 80%, 40%, 1);
 }
+
+
 
 .image-card {
     border: 1px solid green;
     border-radius: 5px;
     display: grid;
     grid-template-columns:  1fr 1fr;
-    grid-template-rows:     1fr .25fr;
+    grid-template-rows:     220px 50px;
     grid-template-areas:    "image image"
                             "info info";
-    width: 200px;
+    width: 220px;
 }
 
 .image {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     border-radius: 5px;
-    width: 200px;
-    height: 200px;
-    /* border-radius: 50%; */
+    width: var(--size-image);
+    height: var(--size-image);
     grid-area: image;
     object-fit: cover;
+    transition: transform 0.8s;
 }
-.image:hover {
-    cursor: pointer;
+
+
+.image-description {
+    /* border: 1px solid yellow; */
+    border-radius: 5px;
+    display: grid;
+    grid-area: image;
+    font-size: 1.25rem;
+    width: var(--size-description);
+    height: var(--size-description);
+    padding: 10px;
+    align-items: center;
+
 }
+
+.image-tagline {
+    font-size: .85rem;
+}
+
+/* .image-description:active {
+    transform: rotateY(180deg);
+} */
 
 .image-info {
     display: grid;
@@ -36,38 +62,47 @@
     grid-template-areas: "like text";
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
+.fa-thumbs-up,
 .button-like {
     display: grid;
     grid-area: like;
     justify-content: center;
     align-items: center;
     margin: 0 auto 0 auto; 
-    width: var(--size-button-like);
-    height: var(--size-button-like);
     border-radius: 50%;
     border: none;
-    background-color: var(--color-button-like);
     font-size: .8rem;
-    /* background-image: url('public/icon_heart.png') no-repeat; */
-}
-.button-like:active {
-    transform: scale(1.25);
-}
-
-.image-description {
-    border: 1px solid blue;
-    border-radius: 5px;
-    width: 200px;
-    height: 200px;
-    grid-area: image;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    /* display: none; */
+    cursor: pointer;
+    size: 5x;
+    position: relative;
 }
 
-.toggle-hidden {
-    display: none; 
+.fa-thumbs-up:active {
+    transform: scale(1.45);
+    transition: 125ms;
+    z-index: 3;
+}
+
+.button-like {
+    z-index: 2;
+    font-size: 8px;
+    position: absolute;
+    bottom: 28px;
+    left: 30px;
+    width: var(--size-button-like);
+    height: var(--size-button-like);
+    background-color: var(--color-button-like);
+    color: white;
+}
+
+.fa-thumbs-up { 
+    z-index: 1;
+    width: var(--size-thumbs-up);
+    height: var(--size-thumbs-up);
+    transform: scale(1.38);
+    background-color: var(--color-thumbs-up);
+    color: white;
 }

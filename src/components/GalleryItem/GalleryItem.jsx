@@ -7,7 +7,7 @@ import {useState} from 'react';
 function GalleryItem({listItem, fetchGalleryList, setGalleryList}) {
     console.log(`in GalleryItem`);
 
-    const [toggleStatus, setToggleStatus] = useState(false)
+    const [toggleStatus, setToggleStatus] = useState(true)
 
     const handleLike = (id) => {
         console.log(`you LIKED this image`);
@@ -27,16 +27,17 @@ function GalleryItem({listItem, fetchGalleryList, setGalleryList}) {
         setToggleStatus(!toggleStatus);
     }
 
-    const image = (<img className="image"
+    const image = (<img 
+                    className="image"
                     src={listItem.path} 
-                    alt={listItem.description} 
+                    alt={listItem.description}
                 />)
 
 
     const description = (
-    <div className="image-description">
-        <p>you made the description come to life</p>
-    </div>)
+        <div className="image-description">
+            {listItem.description}
+        </div>)
 
 
     console.log(toggleStatus);
@@ -48,13 +49,11 @@ function GalleryItem({listItem, fetchGalleryList, setGalleryList}) {
                 {toggleStatus ? image : description}
             </div>
            
-
-           
-            
+ 
             <div className="image-info">
-                <button onClick={handleLike} 
-                    className="button-like">{listItem.likes}
-                </button>
+                <i onClick={handleLike} class="fas fa-thumbs-up"></i>
+                <p className="button-like">{listItem.likes}</p>
+                <p className="image-tagline">{listItem.tagline}</p>
             </div>
 
     </div>

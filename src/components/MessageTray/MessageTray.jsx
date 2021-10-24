@@ -1,30 +1,58 @@
 import './MessageTray.css';
-
+import {useState} from 'react';
+import MessageList from '../MessageList/MessageList.jsx'
 
 
 // when we click on the 'drop a short message' button; the message tray is deployed on the DOM; 
-function MessageTray({ messageState, setMessageState }) {
+function MessageTray({messageState, messageList, postMessage}) {
 
-    console.log(messageState);
+
+    const [newMessageInput, setNewMessageInput] = useState('');
+  
+
+    const handlePostButton = (e) => {
+        e.preventDefault();
+
+        const newMessage = {
+            message: newMessageInput
+        }
+
+        // post the message from the input field on the DOM to the db; 
+        postMessage(newMessage);
+
+        // clear inputs out after submit;
+        setNewMessageInput('');
+
+    }
+
 
     const showMessageTray = (
+
         <div className="message-tray-show">
 
-            <div className="message-input-container">
+            <form className="message-input-container" onSubmit={handlePostButton}>
                 <input
                     className="message-input"
                     type="text"
                     placeholder="leave a message"
                     maxlength="120"
+                    onChange={(e) => setNewMessageInput(e.target.value)}
+                    value = {newMessageInput}
+                    required
                 >
                 </input>
-                <button className="button-post">POST</button>
-            </div>
+                <button type="submit" className="button-post">POST</button>
+            </form>
+            
+            <p className="recent-messages">RECENT MESSAGES</p>
 
             <ul className="message-display">
-                <li>MESSAGES WILL GO HERE, LETS PRETEND THIS IS A LONGER ONE</li>
-                <li>This all looks great! Thanks for sharing</li>
-                <li>MESSAGES WILL GO HERE, LETS PRETEND THIS IS A LONGER ONE</li>
+                {messageList.map((message) => (
+                    <MessageList 
+                        key={message.id}
+                        message={message}
+                    />
+                ))}
             </ul>
 
         </div>
@@ -35,6 +63,8 @@ function MessageTray({ messageState, setMessageState }) {
     )
 
 
+
+    console.log(messageState);
 
     return (
         <section>
@@ -47,3 +77,33 @@ function MessageTray({ messageState, setMessageState }) {
 
 
 export default MessageTray;
+
+
+
+// function StudentForm({ addStudent }) {
+    
+//     const [student, setStudent] = useState({ github_name: '' });
+
+//     // Called when the submit button is pressed
+//     const handleSubmit = (event) => {
+//         event.preventDefault();
+//         addStudent(student);
+//         clearStudentFields();
+//     }
+
+//     // Clear fields of the form by reseting the user
+//     const clearStudentFields = () => {
+//         setStudent({ github_name: ''});
+//     }
+
+
+//     return (
+//         <form onSubmit={handleSubmit}>
+//             <input className="text-input" onChange={(event) => setStudent({github_name: event.target.value})}
+//                     value={student.github_name}
+//                     placeholder="GitHub username" />
+//             <input className="submit-button" type="submit" value="Submit" />
+//         </form>
+//     );
+    
+// }

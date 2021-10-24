@@ -3,25 +3,23 @@
     --color-button-post: hsla(210, 80%, 40%, 1);
     --color-button-post-hover: hsla(210, 80%, 25%, 1);
     --color-text-gray-medium:  hsla(210, 10%, 25%, 1);
+    
 }
 
 
 .message-tray-show {
-    /* border: 1px solid blue; */
+    /* border: 1px solid red; */
     z-index: 20;
-    width: 250px;
+    width: 220px;
     height: 560px;
     background-color: white;
-    padding: 1.5% 2% 0 2%; 
+    padding: 1.5% 15px 0 15px; 
     border-radius: var(--border-radius-small);
-    overflow: scroll;
-
-    grid-template-columns: 8fr, 1fr;
-    grid-template-rows: 30px 1fr;
     box-shadow: var(--box-shadow-card);
 }
   
 .message-input-container {
+    /* border: 1px solid green; */
     display: grid;
     padding: 2%;
     margin: 5px 0 0 0;
@@ -56,15 +54,17 @@
     background-color: var(--color-button-post-hover);
 }
 
+.recent-messages {
+    margin: 10px 0 0 0; 
+    padding: 1% 0 5% 0;
+    color: var(--color-button-post);
+    font-size: 1rem;
+    border-bottom: .5px solid lightgray;
+}
+
 
 .message-display {
+    /* border: 1px solid blue; */
     padding: 1%; 
     line-height: 1.4;
-}
-.message-display li {
-    margin: 10px 0 0 0; 
-    padding: 1%;
-    border: 1px solid var(--color-button-post);
-    border-radius: var(--border-radius-small);
-    color: var(--color-text-gray-medium);
 }

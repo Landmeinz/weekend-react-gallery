@@ -7,14 +7,12 @@ import GalleryList from '../GalleryList/GalleryList.jsx'
 import MessageTray from '../MessageTray/MessageTray.jsx'
 
 
-
 import './App.css';
 
 
 
 // photo gallery App; 
 function App() {
-
 
   // const addGalleryData = (newPost) => {
   //   axios({
@@ -30,7 +28,37 @@ function App() {
   // }
 
 
-  const [messageState, setMessageState] = useState(true);
+  const [messageList, setMessageList] = useState([]);
+
+  const fetchMessageList = () => {
+    axios.get('/messages')
+    .then((response) => {
+      console.log('GET /messages RESPONSE', response);
+      setMessageList(response.data);
+    }).catch((error) => {
+      console.log('GET /gallery ERROR', error);
+    });
+  };
+
+  const postMessage = (newMessage) => {
+    console.log('new message from postMessage:', newMessage);
+    axios({
+        method: `POST`,
+        url:    `/messages`,
+        data:   newMessage
+    }).then(response => {
+        console.log(`POST /messages response`, response);
+        fetchMessageList();
+    }).catch(error => {
+        console.log(`POST /messages ERROR`, error);
+    })
+  }
+
+
+
+
+
+  const [messageState, setMessageState] = useState(false);
 
   const handleMessage = () => {
     console.log(`CLICK message button`);
@@ -55,7 +83,9 @@ function App() {
     fetchGalleryList();
   }, []);
 
-
+  useEffect(() =>{
+    fetchMessageList();
+  }, []);
 
   return (
     <div className="app-container">
@@ -69,7 +99,9 @@ function App() {
 
         <MessageTray 
           messageState={messageState} 
-          setMessageState={setMessageState}
+          messageList={messageList}
+          fetchMessageList={fetchMessageList}
+          postMessage={postMessage}
         />
 
         <GalleryList 

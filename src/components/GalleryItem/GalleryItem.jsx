@@ -4,7 +4,8 @@ import {useState} from 'react';
 
 
 
-function GalleryItem({listItem, fetchGalleryList, setGalleryList}) {
+// PUT / UPDATE the number of likes; 
+function GalleryItem({listItem, fetchGalleryList}) {
     console.log(`in GalleryItem`);
 
     const handleLike = (id) => {
@@ -21,7 +22,7 @@ function GalleryItem({listItem, fetchGalleryList, setGalleryList}) {
     };
 
 
-    // CONDITIONAL RENDERING for the image or text display;
+    // CONDITIONAL RENDERING for the image or text display on card;
     const [toggleStatus, setToggleStatus] = useState(true)
 
     const toggleDescription = () => {
@@ -56,7 +57,7 @@ function GalleryItem({listItem, fetchGalleryList, setGalleryList}) {
     )
 
 
-
+        
     return (
         <div className="image-card">
 

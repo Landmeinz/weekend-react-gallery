@@ -6,9 +6,7 @@ import MessageList from '../MessageList/MessageList.jsx'
 // when we click on the 'drop a short message' button; the message tray is deployed on the DOM; 
 function MessageTray({messageState, messageList, postMessage}) {
 
-
     const [newMessageInput, setNewMessageInput] = useState('');
-  
 
     const handlePostButton = (e) => {
         e.preventDefault();
@@ -22,7 +20,6 @@ function MessageTray({messageState, messageList, postMessage}) {
 
         // clear inputs out after submit;
         setNewMessageInput('');
-
     }
 
 

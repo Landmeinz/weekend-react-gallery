@@ -1,11 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 
-import {useState, useEffect} from 'react';
-
 import GalleryList from '../GalleryList/GalleryList.jsx'
 import MessageTray from '../MessageTray/MessageTray.jsx'
 
+import {useState, useEffect} from 'react';
 
 import './App.css';
 
@@ -14,22 +13,10 @@ import './App.css';
 // photo gallery App; 
 function App() {
 
-  // const addGalleryData = (newPost) => {
-  //   axios({
-  //     method: 'POST',
-  //     url:    '/gallery',
-  //     data:   newPost,
-  //   }).then(response => {
-  //     console.log('POST /gallery response:', response);
-  //     fetchGalleryList();
-  //   }).catch(error => {
-  //     console.log('POST /gallery ERROR:', error);
-  //   });
-  // }
-
-
+  // users can leave messages on the site; 
   const [messageList, setMessageList] = useState([]);
 
+  // GET all of the messages on the database;
   const fetchMessageList = () => {
     axios.get('/messages')
     .then((response) => {
@@ -40,6 +27,7 @@ function App() {
     });
   };
 
+  // POST a new message to the database; 
   const postMessage = (newMessage) => {
     console.log('new message from postMessage:', newMessage);
     axios({
@@ -56,17 +44,17 @@ function App() {
 
 
 
-
-
+  // tracking the state of the message tray; true === tray deployed; false === tray hidden;
   const [messageState, setMessageState] = useState(false);
 
+  // toggle the tray appearance; 
   const handleMessage = () => {
     console.log(`CLICK message button`);
     setMessageState(!messageState)
   };
 
 
-
+  // tracking the list of all of the photos in the gallery database; 
   const [galleryList, setGalleryList] = useState([]);
 
   const fetchGalleryList = () => {
@@ -79,13 +67,16 @@ function App() {
     });
   };
 
+  // on page load lets grab all of the images in the gallery;
   useEffect(() =>{
     fetchGalleryList();
   }, []);
 
+  // on page load all of the stored messages; 
   useEffect(() =>{
     fetchMessageList();
   }, []);
+
 
   return (
     <div className="app-container">
@@ -109,10 +100,7 @@ function App() {
           fetchGalleryList={fetchGalleryList}
           setGalleryList={setGalleryList}
           />
-        
       </main>
-
-      
 
     </div>
   );

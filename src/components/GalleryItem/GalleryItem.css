@@ -11,7 +11,8 @@
     --color-button-like:    hsla(360, 80%, 60%, 1);
     --color-thumbs-up:      hsla(210, 80%, 40%, 1);
 
-    --box-shadow-card:      hsla(220, 20%, 50%, 1) 0px 1px 4px;
+    --box-shadow-card:      hsla(220, 20%, 50%, 1) 0px 2px 4px;
+    --box-shadow-button:    hsla(220, 20%, 50%, 1) 0px 1px 2px;
 }
 
 
@@ -124,6 +125,7 @@
     transform: scale(1.32);
     background-color: var(--color-thumbs-up);
     color: white;
+    box-shadow: var(--box-shadow-button);
 }
 
 .hidden {

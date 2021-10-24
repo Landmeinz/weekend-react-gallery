@@ -69,6 +69,7 @@ function App() {
 
         <MessageTray 
           messageState={messageState} 
+          setMessageState={setMessageState}
         />
 
         <GalleryList 

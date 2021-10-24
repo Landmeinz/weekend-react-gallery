@@ -11,6 +11,7 @@ import './App.css';
 
 
 
+// photo gallery App; 
 function App() {
 
   const [galleryList, setGalleryList] = useState([]);

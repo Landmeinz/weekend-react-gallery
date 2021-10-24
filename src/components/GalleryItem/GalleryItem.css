@@ -121,7 +121,7 @@
     z-index: 1;
     width: var(--size-thumbs-up);
     height: var(--size-thumbs-up);
-    transform: scale(1.38);
+    transform: scale(1.32);
     background-color: var(--color-thumbs-up);
     color: white;
 }

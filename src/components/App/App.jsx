@@ -34,7 +34,7 @@ function App() {
     <div className="app-container">
 
       <header className="app-header">
-        <h1 className="app-title">Gallery of My Life</h1>
+        <h1 className="app-title">PHOTOS FOR VIEWING</h1>
       </header>
 
       <main className="main-container">

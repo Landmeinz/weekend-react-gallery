@@ -1,36 +1,48 @@
 
 :root {
-    --size-button-like: 28px; 
-    --size-thumbs-up:   30px;
+    --size-button-like: 26px; 
+    --size-thumbs-up:   28px;
     --size-image:       220px;
-    --size-image-gap:   15px;
+    --size-image-gap:   20px;
     --size-description: 200px;
+
+    --border-radius-small: 10px;
 
     --color-button-like:    hsla(360, 80%, 60%, 1);
     --color-thumbs-up:      hsla(210, 80%, 40%, 1);
+
+    --box-shadow-card:      hsla(220, 20%, 50%, 1) 0px 1px 4px;
 }
 
 
 
 .image-card {
-    border: 1px solid green;
-    border-radius: 5px;
+    /* border: 1px solid green; */
+    border-radius: var(--border-radius-small);
     display: grid;
     grid-template-columns:  1fr 1fr;
     grid-template-rows:     220px 50px;
     grid-template-areas:    "image image"
                             "info info";
     width: 220px;
+    box-shadow: var(--box-shadow-card);
 }
 
 .image {
     /* border: 1px solid blue; */
-    border-radius: 5px;
     width: var(--size-image);
     height: var(--size-image);
+    border-top-left-radius: var(--border-radius-small);
+    border-top-right-radius: var(--border-radius-small);
     grid-area: image;
     object-fit: cover;
     transition: transform 0.8s;
+}
+
+
+.image-description,
+.image:hover {
+    cursor: pointer;
 }
 
 
@@ -42,14 +54,14 @@
     font-size: 1.25rem;
     width: var(--size-description);
     height: var(--size-description);
+    border-top-left-radius: var(--border-radius-small);
+    border-top-right-radius: var(--border-radius-small);
     padding: 10px;
     align-items: center;
 
 }
 
-.image-tagline {
-    font-size: .85rem;
-}
+
 
 /* .image-description:active {
     transform: rotateY(180deg);
@@ -58,15 +70,22 @@
 .image-info {
     display: grid;
     grid-area: info;
-    grid-template-columns: .25fr 1fr;
+    grid-template-columns: .33fr 1fr;
     grid-template-areas: "like text";
     justify-content: center;
     align-items: center;
     position: relative;
 }
 
+.image-tagline {
+    font-size: .85rem;
+    display: grid;
+    grid-area: text;
+    text-align: center;
+}
+
 .fa-thumbs-up,
-.button-like {
+.like-count {
     display: grid;
     grid-area: like;
     justify-content: center;
@@ -82,16 +101,16 @@
 
 .fa-thumbs-up:active {
     transform: scale(1.45);
-    transition: 125ms;
+    transition: 100ms;
     z-index: 3;
 }
 
-.button-like {
+.like-count {
     z-index: 2;
     font-size: 8px;
     position: absolute;
     bottom: 28px;
-    left: 30px;
+    left: 35px;
     width: var(--size-button-like);
     height: var(--size-button-like);
     background-color: var(--color-button-like);
@@ -105,4 +124,8 @@
     transform: scale(1.38);
     background-color: var(--color-thumbs-up);
     color: white;
+}
+
+.hidden {
+    display: none;
 }

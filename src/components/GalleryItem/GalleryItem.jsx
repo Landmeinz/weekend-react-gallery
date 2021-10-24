@@ -19,10 +19,11 @@ function GalleryItem({listItem, fetchGalleryList, setGalleryList}) {
         }).catch((error) => {
             console.log('PUT /gallery ERROR', error);
         });
+        // if(taglineStatus === true)
     };
 
     
-    const toggle = () => {
+    const toggleDescription = () => {
         console.log(`CLICK on image to toggle`);
         setToggleStatus(!toggleStatus);
     }
@@ -31,28 +32,41 @@ function GalleryItem({listItem, fetchGalleryList, setGalleryList}) {
                     className="image"
                     src={listItem.path} 
                     alt={listItem.description}
-                />)
+                />
+    )
 
 
     const description = (
         <div className="image-description">
             {listItem.description}
-        </div>)
+        </div>
+    )
+
+    const likeCountDisplay = (
+        <div className="like-count">
+            <p>{listItem.likes}</p>
+        </div>
+    )
+
+    const likeCountHidden = (
+        <div className="like-count hidden"></div>
+    )
 
 
-    console.log(toggleStatus);
-
-    return(
+    return (
         <div className="image-card">
 
-            <div onClick={toggle}> 
+            <div onClick={toggleDescription}> 
                 {toggleStatus ? image : description}
             </div>
            
  
             <div className="image-info">
+                {/* when clicked add 1 to the current like count */}
                 <i onClick={handleLike} class="fas fa-thumbs-up"></i>
-                <p className="button-like">{listItem.likes}</p>
+                {/* display red dot with current count of likes;  */}
+                {listItem.likes > 0 ? likeCountDisplay : likeCountHidden}
+                {/* tagline of image */}
                 <p className="image-tagline">{listItem.tagline}</p>
             </div>
 

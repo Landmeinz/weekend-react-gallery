@@ -7,8 +7,6 @@ import {useState} from 'react';
 function GalleryItem({listItem, fetchGalleryList, setGalleryList}) {
     console.log(`in GalleryItem`);
 
-    const [toggleStatus, setToggleStatus] = useState(true)
-
     const handleLike = (id) => {
         console.log(`you LIKED this image`);
 
@@ -22,7 +20,10 @@ function GalleryItem({listItem, fetchGalleryList, setGalleryList}) {
         // if(taglineStatus === true)
     };
 
-    
+
+    // CONDITIONAL RENDERING for the image or text display;
+    const [toggleStatus, setToggleStatus] = useState(true)
+
     const toggleDescription = () => {
         console.log(`CLICK on image to toggle`);
         setToggleStatus(!toggleStatus);
@@ -35,13 +36,15 @@ function GalleryItem({listItem, fetchGalleryList, setGalleryList}) {
                 />
     )
 
-
     const description = (
         <div className="image-description">
             {listItem.description}
         </div>
     )
 
+
+
+    // CONDITIONAL RENDERING of the red dot that's counting the number of likes;
     const likeCountDisplay = (
         <div className="like-count">
             <p>{listItem.likes}</p>
@@ -53,6 +56,7 @@ function GalleryItem({listItem, fetchGalleryList, setGalleryList}) {
     )
 
 
+
     return (
         <div className="image-card">
 
@@ -62,11 +66,13 @@ function GalleryItem({listItem, fetchGalleryList, setGalleryList}) {
            
  
             <div className="image-info">
-                {/* when clicked add 1 to the current like count */}
-                <i onClick={handleLike} class="fas fa-thumbs-up"></i>
-                {/* display red dot with current count of likes;  */}
+                    {/* when clicked add 1 to the current like count */}
+                <i onClick={handleLike} className="fas fa-thumbs-up"></i>
+
+                    {/* display red dot with current count of likes */}
                 {listItem.likes > 0 ? likeCountDisplay : likeCountHidden}
-                {/* tagline of image */}
+                
+                    {/* tagline of image */}
                 <p className="image-tagline">{listItem.tagline}</p>
             </div>
 

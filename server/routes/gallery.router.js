@@ -5,17 +5,41 @@ const galleryItems = require('../modules/gallery.data');
 
 // DO NOT MODIFY THIS FILE FOR BASE MODE
 
-// PUT Route
+// // PUT Route
+// router.put('/like/:id', (req, res) => {
+//     console.log(req.params);
+//     const galleryId = req.params.id;
+//     for(const galleryItem of galleryItems) {
+//         if(galleryItem.id == galleryId) {
+//             galleryItem.likes += 1;
+//         }
+//     }
+//     res.sendStatus(200);
+// }); // END PUT Route
+
+
+// database PUT Route
 router.put('/like/:id', (req, res) => {
     console.log(req.params);
     const galleryId = req.params.id;
-    for(const galleryItem of galleryItems) {
-        if(galleryItem.id == galleryId) {
-            galleryItem.likes += 1;
-        }
-    }
-    res.sendStatus(200);
+
+    let queryText = `
+        UPDATE 	"gallery"
+        SET 	"likes" = "likes" + 1
+        WHERE 	"id" = $1; ` ;
+
+    let values = [galleryId];
+
+    pool.query(queryText, values)
+        .then(result => {
+            res.sendStatus(200);
+        }).catch(error => {
+            console.log('router.put /gallery/like ERROR', error);
+            res.sendStatus(500);
+        });
+    
 }); // END PUT Route
+
 
 
 // GET Route
@@ -23,7 +47,8 @@ router.get('/', (req, res) => {
     // res.send(galleryItems);
     const queryText = `
         SELECT *
-        FROM "gallery"; `;
+        FROM     "gallery"
+        ORDER BY "likes" DESC; `;
 
     pool.query(queryText)
         .then(response => {
@@ -35,6 +60,8 @@ router.get('/', (req, res) => {
         }); 
     
 }); // END GET Route
+
+
 
 // script to feed current galleryItems data into the SQL gallery database??; 
 

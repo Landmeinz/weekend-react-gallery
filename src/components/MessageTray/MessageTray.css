@@ -59,7 +59,7 @@
     margin: 10px 0 0 0; 
     padding: 1% 0 5% 0;
     color: var(--color-button-post);
-    font-size: 1rem;
+    font-size: .9rem;
     border-bottom: .5px solid lightgray;
 }
 

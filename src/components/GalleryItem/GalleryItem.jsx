@@ -28,6 +28,7 @@ function GalleryItem({listItem, fetchGalleryList}) {
     const toggleDescription = () => {
         console.log(`CLICK on image to toggle`);
         setToggleStatus(!toggleStatus);
+
     }
 
     const image = (<img 
@@ -37,8 +38,9 @@ function GalleryItem({listItem, fetchGalleryList}) {
                 />
     )
 
-    const description = (
-        <div className="image-description">
+    const description = (    
+        <div 
+            className="image-description">
             {listItem.description}
         </div>
     )
@@ -57,7 +59,7 @@ function GalleryItem({listItem, fetchGalleryList}) {
     )
 
 
-        
+
     return (
         <div className="image-card">
 

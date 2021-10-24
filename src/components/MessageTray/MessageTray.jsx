@@ -72,35 +72,4 @@ function MessageTray({messageState, messageList, postMessage}) {
 
 
 
-
 export default MessageTray;
-
-
-
-// function StudentForm({ addStudent }) {
-    
-//     const [student, setStudent] = useState({ github_name: '' });
-
-//     // Called when the submit button is pressed
-//     const handleSubmit = (event) => {
-//         event.preventDefault();
-//         addStudent(student);
-//         clearStudentFields();
-//     }
-
-//     // Clear fields of the form by reseting the user
-//     const clearStudentFields = () => {
-//         setStudent({ github_name: ''});
-//     }
-
-
-//     return (
-//         <form onSubmit={handleSubmit}>
-//             <input className="text-input" onChange={(event) => setStudent({github_name: event.target.value})}
-//                     value={student.github_name}
-//                     placeholder="GitHub username" />
-//             <input className="submit-button" type="submit" value="Submit" />
-//         </form>
-//     );
-    
-// }

@@ -40,11 +40,24 @@
     transition: transform 0.8s;
 }
 
-
 .image-description,
 .image:hover {
     cursor: pointer;
 }
+
+
+.image-as-background {
+    width: var(--size-image);
+    height: var(--size-image);
+    border-top-left-radius: var(--border-radius-small);
+    border-top-right-radius: var(--border-radius-small);
+    grid-area: image;
+    object-fit: cover;
+    transition: transform 0.8s;
+    z-index: -1;
+}
+
+
 
 
 .image-description {
@@ -59,7 +72,6 @@
     border-top-right-radius: var(--border-radius-small);
     padding: 10px;
     align-items: center;
-
 }
 
 
@@ -126,6 +138,12 @@
     background-color: var(--color-thumbs-up);
     color: white;
     box-shadow: var(--box-shadow-button);
+}
+
+
+.blur {
+    filter: blur(1.25px);
+    opacity: .5;
 }
 
 .hidden {

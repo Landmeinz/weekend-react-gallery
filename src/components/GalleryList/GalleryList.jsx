@@ -3,7 +3,7 @@ import './GalleryList.css';
 import GalleryItem from '../GalleryItem/GalleryItem.jsx';
 
 
-function GalleryList({galleryList, fetchGalleryList, setGalleryList}) {
+function GalleryList({galleryList, fetchGalleryList}) {
 
     console.log(`in GalleryList`);
     console.log(galleryList);

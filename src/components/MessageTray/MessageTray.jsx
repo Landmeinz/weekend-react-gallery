@@ -57,7 +57,7 @@ function MessageTray({messageTrayState, messageList, postMessage}) {
     )
 
     const hideMessageTray = (
-        <div className="hidden"></div>
+        <div className="hidden .slide-out"></div>
     )
 
 

@@ -4,7 +4,7 @@ import MessageList from '../MessageList/MessageList.jsx'
 
 
 // when we click on the 'drop a short message' button; the message tray is deployed on the DOM; 
-function MessageTray({messageState, messageList, postMessage}) {
+function MessageTray({messageTrayState, messageList, postMessage}) {
 
     const [newMessageInput, setNewMessageInput] = useState('');
 
@@ -61,11 +61,11 @@ function MessageTray({messageState, messageList, postMessage}) {
 
 
 
-    console.log(messageState);
+    console.log(messageTrayState);
 
     return (
         <section>
-            {messageState ? showMessageTray : hideMessageTray}
+            {messageTrayState ? showMessageTray : hideMessageTray}
         </section>
     )
 }; // GalleryList

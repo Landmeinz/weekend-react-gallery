@@ -16,6 +16,26 @@ function App() {
   // users can leave messages on the site; 
   const [messageList, setMessageList] = useState([]);
 
+  // tracking the state of the message tray; true === tray deployed; false === tray hidden;
+  const [messageTrayState, setMessageTrayState] = useState(false);
+
+  // tracking the list of all of the photos in the gallery database; 
+  const [galleryList, setGalleryList] = useState([]);
+
+
+
+  // on page load lets grab all of the images in the gallery;
+  useEffect(() =>{
+    fetchGalleryList();
+  }, []);
+
+  // on page load all of the stored messages; 
+  useEffect(() =>{
+    fetchMessageList();
+  }, []);
+
+
+
   // GET all of the messages on the database;
   const fetchMessageList = () => {
     axios.get('/messages')
@@ -44,19 +64,6 @@ function App() {
 
 
 
-  // tracking the state of the message tray; true === tray deployed; false === tray hidden;
-  const [messageState, setMessageState] = useState(false);
-
-  // toggle the tray appearance; 
-  const handleMessage = () => {
-    console.log(`CLICK message button`);
-    setMessageState(!messageState)
-  };
-
-
-  // tracking the list of all of the photos in the gallery database; 
-  const [galleryList, setGalleryList] = useState([]);
-
   const fetchGalleryList = () => {
     axios.get('/gallery')
     .then((response) => {
@@ -67,29 +74,20 @@ function App() {
     });
   };
 
-  // on page load lets grab all of the images in the gallery;
-  useEffect(() =>{
-    fetchGalleryList();
-  }, []);
 
-  // on page load all of the stored messages; 
-  useEffect(() =>{
-    fetchMessageList();
-  }, []);
-
-
+  
   return (
     <div className="app-container">
 
       <header className="app-header">
         <h1 className="app-title">GALLERY OF STUFF I LIKE</h1>
-        <button onClick={handleMessage} className="button-message">drop a short message</button>
+        <button onClick={() => setMessageTrayState(!messageTrayState)} className="button-message">drop a short message</button>
       </header>
 
       <main className="main-container">
 
         <MessageTray 
-          messageState={messageState} 
+          messageTrayState={messageTrayState} 
           messageList={messageList}
           fetchMessageList={fetchMessageList}
           postMessage={postMessage}

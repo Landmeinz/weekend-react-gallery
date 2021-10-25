@@ -21,16 +21,13 @@ function GalleryItem({listItem, fetchGalleryList}) {
         // if(taglineStatus === true)
     };
 
+    
 
     // CONDITIONAL RENDERING for the image or text display on card;
     const [toggleStatus, setToggleStatus] = useState(true)
 
-    const toggleDescription = () => {
-        console.log(`CLICK on image to toggle`);
-        setToggleStatus(!toggleStatus);
 
-    }
-
+    // image side of the card;
     const image = (<img 
                     className="image"
                     src={listItem.path} 
@@ -38,11 +35,12 @@ function GalleryItem({listItem, fetchGalleryList}) {
                 />
     )
 
+    // text side of the card;
     const description = (    
-        <div 
-            className="image-description">
-            {listItem.description}
-        </div>
+            <div 
+                className="image-description">
+                {listItem.description}
+            </div>
     )
 
 
@@ -63,7 +61,7 @@ function GalleryItem({listItem, fetchGalleryList}) {
     return (
         <div className="image-card">
 
-            <div onClick={toggleDescription}> 
+            <div onClick={() => setToggleStatus(!toggleStatus)}> 
                 {toggleStatus ? image : description}
             </div>
            
@@ -83,6 +81,7 @@ function GalleryItem({listItem, fetchGalleryList}) {
     )
 
 } // GalleryItem
+
 
 
 export default GalleryItem;

@@ -10,7 +10,7 @@
 .message-tray-show {
     /* border: 1px solid red; */
     z-index: 20;
-    width: 220px;
+    width: 200px;
     height: 560px;
     background-color: white;
     padding: 1.5% 15px 0 15px; 

@@ -7,6 +7,8 @@ import MessageList from '../MessageList/MessageList.jsx'
 function MessageTray({messageTrayState, messageList, postMessage}) {
 
     const [newMessageInput, setNewMessageInput] = useState('');
+    
+    // const [toggleSlideClass, setToggleSlideClass] = useState('')
 
     const handlePostButton = (e) => {
         e.preventDefault();
@@ -21,7 +23,6 @@ function MessageTray({messageTrayState, messageList, postMessage}) {
         // clear inputs out after submit;
         setNewMessageInput('');
     }
-
 
     const showMessageTray = (
 
@@ -61,10 +62,18 @@ function MessageTray({messageTrayState, messageList, postMessage}) {
 
 
 
+    // const toggleClassOn = (
+    //     setToggleSlideClass('slide-tray')
+    // )
+
+
+
+
     console.log(messageTrayState);
 
     return (
         <section>
+            {/* {messageTrayState ? toggleClassOn : toggleClassOff} */}
             {messageTrayState ? showMessageTray : hideMessageTray}
         </section>
     )
@@ -73,3 +82,4 @@ function MessageTray({messageTrayState, messageList, postMessage}) {
 
 
 export default MessageTray;
+

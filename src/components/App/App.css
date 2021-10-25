@@ -55,7 +55,7 @@ button {
 .button-message:hover {
   background-color: var(--color-thumbs-up);
   color: white;
-  transition: 200ms;
+  transition: 140ms;
 }
 
 .main-container {

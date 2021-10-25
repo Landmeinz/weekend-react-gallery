@@ -21,10 +21,11 @@ function GalleryItem({listItem, fetchGalleryList}) {
         // if(taglineStatus === true)
     };
 
-    
+
 
     // CONDITIONAL RENDERING for the image or text display on card;
     const [toggleStatus, setToggleStatus] = useState(true)
+
 
 
     // image side of the card;
@@ -53,7 +54,7 @@ function GalleryItem({listItem, fetchGalleryList}) {
     )
 
     const likeCountHidden = (
-        <div className="like-count hidden"></div>
+        <div className="hidden"></div>
     )
 
 

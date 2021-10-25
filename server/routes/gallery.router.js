@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool.js')
-// const galleryItems = require('../modules/gallery.data');
+const galleryItems = require('../modules/gallery.data');
 
 
 // database PUT Route; 
@@ -46,6 +46,36 @@ router.get('/', (req, res) => {
         }); 
     
 }); // END GET Route
+
+
+
+
+// trying to write a script to pass out gallery.data into SQL;
+router.post('/', (req, res) => {
+    console.log('POST req.body:', req.body);
+
+    let queryText = ``;
+    let values = []
+
+    for(let item of galleryItems) {
+        queryText = `
+        INSERT INTO "gallery"
+            ("id", "path", "description", "tagline", "likes")
+        VALUES
+            ($1, $2, $3, $4, $5); ` ;
+
+        values = [item.id, item.path, item.description, item.tagline, item.likes];
+
+        pool.query(queryText, values)
+        .then(response => {
+            res.sendStatus(201);
+        }).catch(error => {
+            console.log('POST to /gallery ERROR', error);
+            res.sendStatus(500);
+        });
+    }
+
+});
 
 
 

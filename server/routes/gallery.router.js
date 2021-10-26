@@ -38,7 +38,7 @@ router.get('/', (req, res) => {
 
     pool.query(queryText)
         .then(response => {
-            console.log('response from gallery db:', response);
+            // console.log('response from gallery db:', response);
             res.send(response.rows);
         }).catch(error => {
             console.log('ERROR from gallery db:', error);
@@ -50,33 +50,26 @@ router.get('/', (req, res) => {
 
 
 
-// trying to write a script to pass out gallery.data into SQL;
+// script to push galleryItems array and INSERT INTO our SQL database; call the post with POSTMAN;
+// leave off res.sendStatus(201) and the .then && .catch so it doesn't trip after the fist index in the loop;
+// this is only to push data into SQL and not meant to do anything than that; the response and the GET will clash as they aren't connected; 
+// after you POST then comment out the router.post and restart the server and client; 
+
 router.post('/', (req, res) => {
-    console.log('POST req.body:', req.body);
 
-    let queryText = ``;
-    let values = []
+    for(let item of galleryItems){
+    
+        let queryText = `
+            INSERT INTO "gallery"
+                ("id", "path", "description", "tagline", "likes")
+            VALUES
+                ($1, $2, $3, $4, $5)` ;
 
-    for(let item of galleryItems) {
-        queryText = `
-        INSERT INTO "gallery"
-            ("id", "path", "description", "tagline", "likes")
-        VALUES
-            ($1, $2, $3, $4, $5); ` ;
-
-        values = [item.id, item.path, item.description, item.tagline, item.likes];
-
+        let values = [item.id, item.path, item.description, item.tagline, item.likes];
+        
         pool.query(queryText, values)
-        .then(response => {
-            res.sendStatus(201);
-        }).catch(error => {
-            console.log('POST to /gallery ERROR', error);
-            res.sendStatus(500);
-        });
     }
-
-});
-
+})
 
 
 module.exports = router;

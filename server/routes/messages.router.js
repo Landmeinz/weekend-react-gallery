@@ -40,7 +40,7 @@ router.get('/', (req, res) => {
 
     pool.query(queryText)
         .then(response => {
-            console.log('response from messages db:', response);
+            // console.log('response from messages db:', response);
             res.send(response.rows);
         }).catch(error => {
             console.log('ERROR from messages db:', error);
